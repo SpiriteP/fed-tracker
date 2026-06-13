@@ -258,10 +258,12 @@ main {
 .ds-item { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; font-size: 12.5px; }
 .ds-dot { width: 9px; height: 9px; border-radius: 50%; flex: none; }
 .ds-real { background: var(--cut); box-shadow: 0 0 6px rgba(47, 191, 143, 0.6); }
+.ds-mixed { background: #f0a64a; box-shadow: 0 0 6px rgba(240, 166, 74, 0.5); }
 .ds-sample { background: var(--median); }
 .ds-name { color: var(--text); font-weight: 500; min-width: 180px; }
 .ds-note { color: var(--muted); }
 .ds-note-real { color: var(--cut); }
+.ds-note-mixed { color: #f0a64a; }
 
 /* ---------- Tooltip ---------- */
 .tip {

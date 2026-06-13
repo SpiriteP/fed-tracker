@@ -899,22 +899,25 @@ function renderDataStatus() {
   const fwLive = fwSource !== "sample";
   const histLive = histSource !== "sample";
 
+  // state: "real" (เขียว) · "mixed" (ส้ม) · "sample" (เหลือง)
   const items = [
-    ["FedWatch (โอกาสปรับดอกเบี้ย)", fwLive,
+    ["FedWatch (โอกาสปรับดอกเบี้ย)", fwLive ? "real" : "sample",
       fwLive ? "จาก Fed Funds futures (อัปเดตวันละครั้ง)" : "ยังไม่ได้ดึงข้อมูลสด"],
-    ["กรอบดอกเบี้ยปัจจุบัน", fredLive,
-      fredLive ? "จาก FRED" : "ค่าตั้งต้น — ใส่ FRED key เพื่อดึงจริง"],
-    ["Dot Plot", false, "แก้มือจาก Fed SEP (ไตรมาสละครั้ง)"],
-    ["ประวัติการเปลี่ยนแปลงโอกาส", histLive,
+    ["กรอบดอกเบี้ยปัจจุบัน", fredLive ? "real" : "mixed",
+      fredLive ? "จาก FRED (สด)" : "ค่าจริงล่าสุด (อัปเดตมือ) — ใส่ FRED key เพื่อดึงสด"],
+    ["Dot Plot", "real", "Fed SEP มี.ค. 2026 (อัปเดตมือทุกไตรมาส)"],
+    ["ประวัติการเปลี่ยนแปลงโอกาส", histLive ? "real" : "sample",
       histLive ? "สะสมรายวันจาก backend" : "รอสะสม ≥ 2 วัน"],
-    ["Backtest (ผลย้อนหลัง)", false, "curated ใน data.js"],
+    ["Backtest (ผลย้อนหลัง)", "mixed",
+      "ผลจริงจาก FRED · โอกาสก่อนประชุมอ้างอิง CME/ข่าว"],
   ];
 
-  box.innerHTML = items.map(([name, live, note]) => `
+  const stateLabel = { real: "ข้อมูลจริง", mixed: "จริงบางส่วน", sample: "ตัวอย่าง" };
+  box.innerHTML = items.map(([name, state, note]) => `
     <div class="ds-item">
-      <span class="ds-dot ${live ? "ds-real" : "ds-sample"}"></span>
+      <span class="ds-dot ds-${state}"></span>
       <span class="ds-name">${name}</span>
-      <span class="ds-note ${live ? "ds-note-real" : ""}">${live ? "ข้อมูลจริง" : "ตัวอย่าง"} · ${note}</span>
+      <span class="ds-note ${state === "real" ? "ds-note-real" : state === "mixed" ? "ds-note-mixed" : ""}">${stateLabel[state]} · ${note}</span>
     </div>`).join("");
 }
 

@@ -44,8 +44,8 @@ FOMC_MEETINGS = [
     "2027-01-27", "2027-03-17", "2027-04-28", "2027-06-16",
 ]
 
-# กรอบดอกเบี้ยปัจจุบันเริ่มต้น (ใช้เมื่อไม่ได้ดึงจาก FRED)
-DEFAULT_RATE = {"lower": 3.75, "upper": 4.00}
+# กรอบดอกเบี้ยปัจจุบันเริ่มต้น (ใช้เมื่อไม่ได้ดึงจาก FRED) — ค่าจริง ณ มิ.ย. 2026
+DEFAULT_RATE = {"lower": 3.50, "upper": 3.75}
 
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
