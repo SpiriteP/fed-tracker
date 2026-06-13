@@ -151,12 +151,15 @@
     </section>
 
     <footer class="foot">
-      <p>
-        ⚠️ ข้อมูลบนหน้านี้เป็น <b>ตัวอย่าง</b> เพื่อสาธิตโครงสร้างเว็บ ไม่ใช่ข้อมูลตลาดจริง
-        — แก้ไขตัวเลขได้ที่ <code>data.js</code> · อัปเดตล่าสุด: <span id="lastUpdated"></span>
+      <p class="status-title">สถานะข้อมูลแต่ละส่วน</p>
+      <div id="dataStatus" class="data-status"></div>
+      <p class="src">
+        แหล่งข้อมูล: CME FedWatch · Fed SEP (Dot Plot) · FRED (Fed Funds Rate)
+        · อัปเดตล่าสุด: <span id="lastUpdated"></span>
       </p>
       <p class="src">
-        แหล่งข้อมูลจริง: CME FedWatch Tool · Fed SEP (Dot Plot) · FRED (Fed Funds Rate)
+        ℹ️ ใช้เพื่อการศึกษา/ติดตามเท่านั้น ไม่ใช่คำแนะนำการลงทุน
+        · แก้ตัวเลข Dot Plot / Backtest ได้ที่ <code>data.js</code>
       </p>
     </footer>
   </main>
